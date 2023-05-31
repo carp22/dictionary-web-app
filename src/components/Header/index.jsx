@@ -1,7 +1,8 @@
 import React from 'react'
 import logo from "../../assets/images/logo.svg"
+import searchIcon from "../../assets/images/icon-search.svg"
 import moon from "../../assets/images/icon-moon.svg"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import "./Header.css"
 
 
@@ -27,11 +28,17 @@ function Header({onSearch}) {
               <img src={logo} alt="logo" />
 
             <div className='theme'>
-                <select name="fonts">
+                <select className="fonts">
                     <option value="sans-serif">Sans Serif</option>
                     <option value="serif">Serif</option>
                     <option value="mono">Mono</option>
                 </select>
+                <div class="toggle-switch">
+                  <label class="switch-label">
+                  <input type="checkbox" class="checkbox"/>
+                  <span class="slider"></span>
+                  </label>
+                </div>  
                 <img src={moon} alt="moon-logo" />
             </div>
 
@@ -44,7 +51,7 @@ function Header({onSearch}) {
               value={wordToLookFor} 
               placeholder='Search for any word...'
               onChange={handleChange}/>
-            <button name= "search-btn" onClick={handleClick}>Search ...</button>
+              <img src={searchIcon} alt="search-icon" className="search-icon" onClick={handleClick}/>
           </div>
           
         </div>

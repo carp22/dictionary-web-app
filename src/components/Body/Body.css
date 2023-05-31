@@ -2,16 +2,59 @@
     box-sizing: border-box;
 }
 
-.word-title{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.word{
+body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items:center;
+    max-width: 46rem;
+    min-width: 20rem;
     margin-inline: auto auto;
     margin-block-start: 30px;
+}
+.word-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.word-text{
+    font-size: 32px;
+}
+.word-phonetic{
+    font-size: 18px;
+    color: #A445ED;
+}
+.word-partofspeech{
+    padding: 40px 0 0;
+}
+.partofspeech-text{
+    font-size: 20px;
+    padding: 0 0 32px;;
+}
+.word-partofspeech > p{
+    font-size: 16px;
+    padding: 0 0 16px;
+    color: #757575
+}
+.word-meanings,.word-example{
+    margin-left: 12px;
+    padding-left: 24px;
+}
+.word-meanings{
+    margin: 20px 0 20px;
+}
+.word-example{
+    margin: 13px 0 13px;
+    color: #757575;
+    list-style-type: none;
+    margin-left: 12px;
+    padding-left: 24px;
+}
+.word-synonyms{
+    font-size: 16px;
+    padding: 24px 0 0;
+    color: #757575;
+}
+.synonyms{
+    color: #A445ED;
+    margin-left: 15px;
+    
 }
