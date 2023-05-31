@@ -81,9 +81,27 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  
+.select-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.select-container .arrow-icon-container{
+    position: absolute;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
 .fonts{
-    outline: none;
+    border: none;
+    appearance: none;
+    font-size: 24px;
+    padding: 0 40px 0 0;
+    width: 100%;
+    height: 45px;
 }
 
 .search-section{

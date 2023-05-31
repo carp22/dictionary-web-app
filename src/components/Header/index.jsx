@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../../assets/images/logo.svg"
 import searchIcon from "../../assets/images/icon-search.svg"
+import arrowDown from "../../assets/images/icon-arrow-down.svg"
 import moon from "../../assets/images/icon-moon.svg"
 import { useState } from 'react'
 import "./Header.css"
@@ -28,11 +29,16 @@ function Header({onSearch}) {
               <img src={logo} alt="logo" />
 
             <div className='theme'>
+              <div className="select-container">
                 <select className="fonts">
                     <option value="sans-serif">Sans Serif</option>
                     <option value="serif">Serif</option>
                     <option value="mono">Mono</option>
                 </select>
+                <div className="arrow-icon-container">
+                    <img src={arrowDown} alt="arrow-down" className="arrow-down-icon"/>
+                </div>
+              </div>
                 <div class="toggle-switch">
                   <label class="switch-label">
                   <input type="checkbox" class="checkbox"/>
