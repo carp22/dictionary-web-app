@@ -1,18 +1,34 @@
 import React from 'react'
+import playButton from "../../assets/images/icon-play.svg"
 import "./Body.css"
 
 function Body({ results }) {
-  const { meanings } = results[0] || ""
-  console.log(results)
+  const { meanings } = results?.length ? results[0] : {meanings : []}
+  const { phonetics } = results?.length ? results[0] : {phonetics : []}
+
+  let phonetic = ""
+  for (let index = 0; index < phonetics?.length; index++) {
+    const element = phonetics[index];
+    if(element.text?.length > 0){
+      phonetic = element.text
+      console.log(phonetic)
+      break
+    }
+  }
+
+  const playAudio = function(){
+    const audio = new Audio(results[0]?.phonetics[0].audio)
+    audio.play()
+  }
   
   return (
     <div>
       <section className='word-title'>
         <div className='meaning-found'>
           <h2 className='word-text'>{results[0]?.word}</h2>
-          <h4 className='word-phonetic'>{results[0]?.phonetic}</h4>
+          <h4 className='word-phonetic'>{phonetic}</h4>
         </div>
-        <span className='word-audio'>{results[0]?.phonetics[0].audio}</span>
+          <img src={playButton} alt="audio-img" onClick={playAudio}/>
       </section>
       
       <section className="word-body">

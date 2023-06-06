@@ -16,21 +16,24 @@ body{
     align-items: center;
 }
 .word-text{
-    font-size: 32px;
+    font-size: 64px;
 }
 .word-phonetic{
-    font-size: 18px;
+    font-size: 24px;
     color: #A445ED;
+}
+.word-title > img:hover{
+    cursor: pointer;
 }
 .word-partofspeech{
     padding: 40px 0 0;
 }
 .partofspeech-text{
-    font-size: 20px;
+    font-size: 28px;
     padding: 0 0 32px;;
 }
 .word-partofspeech > p{
-    font-size: 16px;
+    font-size: 20px;
     padding: 0 0 16px;
     color: #757575
 }
@@ -39,6 +42,7 @@ body{
     padding-left: 24px;
 }
 .word-meanings{
+    font-size: 18px;
     margin: 20px 0 20px;
 }
 .word-example{
@@ -47,6 +51,7 @@ body{
     list-style-type: none;
     margin-left: 12px;
     padding-left: 24px;
+    font-size: 18px;
 }
 .word-synonyms{
     font-size: 16px;

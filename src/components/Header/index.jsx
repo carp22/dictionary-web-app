@@ -7,13 +7,18 @@ import { useState } from 'react'
 import "./Header.css"
 
 
-function Header({onSearch}) {
+function Header({onSearch, selectFont, fontFamily}) {
   // Investigar useReference y cambiarlo por useState
   const [wordToLookFor, setWordToLookFor] = useState("") 
-  
+
   const handleChange = function(event){
     const {value} = event.target
     setWordToLookFor(value)
+  }
+  
+  const selectChange = function (event){
+    const {value} = event.target
+    selectFont(value)
   }
   
   const handleClick = function (){
@@ -23,45 +28,40 @@ function Header({onSearch}) {
 
   }
   return (
-    <div>
-        <div className='dictionary-header'>
-          <section className='dictionary-section'>
-              <img src={logo} alt="logo" />
-
-            <div className='theme'>
-              <div className="select-container">
-                <select className="fonts">
-                    <option value="sans-serif">Sans Serif</option>
-                    <option value="serif">Serif</option>
-                    <option value="mono">Mono</option>
-                </select>
-                <div className="arrow-icon-container">
-                    <img src={arrowDown} alt="arrow-down" className="arrow-down-icon"/>
-                </div>
+    <div className='dictionary-header' style={fontFamily}>
+      <section className='dictionary-section'>
+        <img src={logo} alt="logo" />
+          <div className='theme'>
+            <div className="select-container" >
+              <select className="fonts" onChange={selectChange}>
+                <option className='option' value="sans-serif" >Sans Serif</option>
+                <option className='option' value="serif" >Serif</option>
+                <option className='option' value="mono" >Mono</option>
+              </select>
+              <div className="arrow-icon-container">
+                <img src={arrowDown} alt="arrow-down" className="arrow-down-icon"/>
               </div>
-                <div class="toggle-switch">
-                  <label class="switch-label">
-                  <input type="checkbox" class="checkbox"/>
-                  <span class="slider"></span>
-                  </label>
-                </div>  
-                <img src={moon} alt="moon-logo" />
             </div>
-
-          </section>
-          <div className='search-section'>
-
-            <input 
-              type="text" 
-              className='search-input' 
-              value={wordToLookFor} 
-              placeholder='Search for any word...'
-              onChange={handleChange}/>
-              <img src={searchIcon} alt="search-icon" className="search-icon" onClick={handleClick}/>
+            
+            <label className="switch">
+              <input type="checkbox"/>
+              <span className="slider"></span>
+            </label>
+            <img src={moon} alt="moon-logo" />
           </div>
-          
+
+      </section>
+        <div className='search-section'>
+          <input 
+            type="text" 
+            className='search-input' 
+            value={wordToLookFor} 
+            placeholder='Search for any word...'
+            onChange={handleChange}/>
+          <img src={searchIcon} alt="search-icon" className="search-icon" onClick={handleClick}/>
         </div>
-    </div> 
+          
+    </div>
   )
 }
 
