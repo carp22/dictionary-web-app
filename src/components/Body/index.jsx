@@ -7,17 +7,25 @@ function Body({ results }) {
   const { phonetics } = results?.length ? results[0] : {phonetics : []}
 
   let phonetic = ""
+  let mp3
+  
   for (let index = 0; index < phonetics?.length; index++) {
     const element = phonetics[index];
     if(element.text?.length > 0){
       phonetic = element.text
-      console.log(phonetic)
       break
     }
-  }
+  } 
+  for (let index = 0; index < phonetics?.length; index++) {
+    const element = phonetics[index];
+    if(element.audio?.length > 0){
+      mp3 = element.audio
+      break
+    }
+  } 
 
   const playAudio = function(){
-    const audio = new Audio(results[0]?.phonetics[0].audio)
+    const audio = new Audio(mp3)
     audio.play()
   }
   
@@ -28,7 +36,7 @@ function Body({ results }) {
           <h2 className='word-text'>{results[0]?.word}</h2>
           <h4 className='word-phonetic'>{phonetic}</h4>
         </div>
-          <img src={playButton} alt="audio-img" onClick={playAudio}/>
+          {mp3 && <img src={playButton} alt="audio-img" onClick={playAudio}/>}
       </section>
       
       <section className="word-body">
