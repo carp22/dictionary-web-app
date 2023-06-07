@@ -47,7 +47,13 @@ function Header({onSearch, selectFont, fontFamily}) {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
     .then(response => response.json())
     .then(data => onSearch(data))  
-
+    
+  }
+  const handleSubmit = function(event){
+    event.preventDefault()    
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
+    .then(response => response.json())
+    .then(data => onSearch(data))  
   }
   return (
     <div className='dictionary-header' style={fontFamily}>
@@ -73,7 +79,7 @@ function Header({onSearch, selectFont, fontFamily}) {
           </div>
 
       </section>
-        <div className='search-section'>
+        <form className='search-section' onSubmit={handleSubmit}>
           <input 
             type="text" 
             className='search-input' 
@@ -81,7 +87,7 @@ function Header({onSearch, selectFont, fontFamily}) {
             placeholder='Search for any word...'
             onChange={handleChange}/>
           <img src={searchIcon} alt="search-icon" className="search-icon" onClick={handleClick}/>
-        </div>
+        </form>
           
     </div>
   )
