@@ -44,7 +44,7 @@ function Body({ results }) {
         <div key={index}>
           <section className="word">
             <div className="word-partofspeech">
-              <h4 className="partofspeech-text">{meaning.partOfSpeech}<hr /></h4> 
+              <h4 className="partofspeech-text">{meaning.partOfSpeech}</h4> 
               <p>Meaning</p>
                  {meaning.definitions.map( (element, index) => (
                   <ul key={index}>

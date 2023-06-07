@@ -18,9 +18,7 @@ function App() {
       <div style={fontStyle}>
         <Header onSearch={setDictionary} selectFont={setFont} fontFamily = {fontStyle}/>
         {
-          dictionary.length > 0 ? 
-            <Body results={dictionary}/> :
-            <></>
+          dictionary.length > 0 && <Body results={dictionary}/> 
         }
         
       </div>

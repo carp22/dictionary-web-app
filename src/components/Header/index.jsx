@@ -11,6 +11,28 @@ function Header({onSearch, selectFont, fontFamily}) {
   // Investigar useReference y cambiarlo por useState
   const [wordToLookFor, setWordToLookFor] = useState("") 
 
+  const setDarkMode = function(){
+    document.querySelector("body").setAttribute("app-theme", "dark")
+    localStorage.setItem("selectedTheme", "dark")
+  }
+  const setLightMode = function(){
+    document.querySelector("body").setAttribute("app-theme", "light")
+    localStorage.setItem("selectedTheme", "light")
+  }
+
+  const selectedTheme = localStorage.getItem("selectedTheme")
+  if(selectedTheme === "dark"){
+    setDarkMode()
+  }
+
+  const handleToggle = function(event){
+    if(event.target.checked){
+      setDarkMode()
+    } else {
+      setLightMode()
+    }
+  }
+
   const handleChange = function(event){
     const {value} = event.target
     setWordToLookFor(value)
@@ -44,7 +66,7 @@ function Header({onSearch, selectFont, fontFamily}) {
             </div>
             
             <label className="switch">
-              <input type="checkbox"/>
+              <input type="checkbox" onChange={handleToggle} defaultChecked={selectedTheme === "dark"}/>
               <span className="slider"></span>
             </label>
             <img src={moon} alt="moon-logo" />

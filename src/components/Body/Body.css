@@ -29,8 +29,21 @@ body{
     padding: 40px 0 0;
 }
 .partofspeech-text{
+    display: inline-block;
+    position: relative;
     font-size: 28px;
     padding: 0 0 32px;;
+}
+.partofspeech-text::after{
+    content: "";
+    position: absolute;
+    margin-left: 20px;
+    max-width: auto;
+    min-width: 20rem;
+    height: 1px;
+    background-color: #757575;
+    top: 1rem;
+
 }
 .word-partofspeech > p{
     font-size: 20px;
