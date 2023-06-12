@@ -10,6 +10,7 @@ body{
     margin-inline: auto auto;
     margin-block-start: 30px;
 }
+
 .word-title{
     display: flex;
     justify-content: space-between;
@@ -51,13 +52,14 @@ body{
     color: #757575
 }
 .word-meanings,.word-example{
-    margin-left: 12px;
+    margin-left: 15px;
     padding-left: 24px;
 }
 .word-meanings{
     font-size: 18px;
     margin: 20px 0 20px;
 }
+
 .word-example{
     margin: 13px 0 13px;
     color: #757575;
