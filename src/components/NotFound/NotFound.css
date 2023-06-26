@@ -1,0 +1,10 @@
+.error-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: 80px;
+}
+.error-title{
+    padding-block: 20px;
+}

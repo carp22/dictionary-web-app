@@ -3,33 +3,78 @@ import logo from "../../assets/images/logo.svg"
 import searchIcon from "../../assets/images/icon-search.svg"
 import arrowDown from "../../assets/images/icon-arrow-down.svg"
 import moon from "../../assets/images/icon-moon.svg"
+import Select from 'react-select'
 import { useState } from 'react'
 import "./Header.css"
 
 
-function Header({onSearch, selectFont, fontFamily}) {
+function Header({onSearch, selectFont, darkMode, lightMode, currentTheme}) {
   // Investigar useReference y cambiarlo por useState
   const [wordToLookFor, setWordToLookFor] = useState("") 
-
-  const setDarkMode = function(){
-    document.querySelector("body").setAttribute("app-theme", "dark")
-    localStorage.setItem("selectedTheme", "dark")
+  
+  const fonts = [
+    {label: "Sans Serif", value: "sans-serif"},
+    {label: "Serif", value: "serif"},
+    {label: "Mono", value: "mono"}
+  ]
+  
+  const selectStyles = {
+    menu:(styles) => ({
+      ...styles,
+      boxShadow: currentTheme === "dark" && "0 5px 1.75rem #A445ED",
+      backgroundColor: currentTheme === "dark" ? "black" : "white",
+      borderRadius: "15px",
+      width: "165px",
+      marginLeft: "-35px",
+      paddingTop: "20px",
+      paddingBottom: "20px"
+    }),
+    option:(styles) => ({
+      ...styles,
+      width: "165px",
+      backgroundColor: "none",
+      color: currentTheme === "dark" ? "white" : "black",
+      "&:hover": {
+        color: "#A445ED",
+        cursor: "pointer"
+      }
+    }),
+    control:(styles, {isFocused}) => ({
+      ...styles,
+      backgroundColor: "none",
+      border: "none",
+      outline: isFocused && "1px solid #A445ED" ,
+      "&:hover":{
+        cursor:"pointer"
+      }
+    }),
+    dropdownIndicator:(styles) =>({
+      ...styles,
+      color: "#A445ED"
+    }),
+    singleValue:(styles)=>({
+      ...styles,
+      color: currentTheme === "dark" ? "white" : "black",
+    })
   }
-  const setLightMode = function(){
-    document.querySelector("body").setAttribute("app-theme", "light")
-    localStorage.setItem("selectedTheme", "light")
-  }
 
-  const selectedTheme = localStorage.getItem("selectedTheme")
-  if(selectedTheme === "dark"){
-    setDarkMode()
+  const handleClick = function (){
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
+    .then(response => response.json())
+    .then(data => onSearch(data))  
+  }
+  const handleSubmit = function(event){
+    event.preventDefault() 
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
+      .then(response => response.json())
+      .then(data => onSearch(data))  
   }
 
   const handleToggle = function(event){
     if(event.target.checked){
-      setDarkMode()
+      darkMode()
     } else {
-      setLightMode()
+      lightMode()
     }
   }
 
@@ -39,40 +84,25 @@ function Header({onSearch, selectFont, fontFamily}) {
   }
   
   const selectChange = function (event){
-    const {value} = event.target
-    selectFont(value)
+    selectFont(event.value)
   }
-  
-  const handleClick = function (){
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
-    .then(response => response.json())
-    .then(data => onSearch(data))  
-    
-  }
-  const handleSubmit = function(event){
-    event.preventDefault()    
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToLookFor}`)
-    .then(response => response.json())
-    .then(data => onSearch(data))  
-  }
+
   return (
-    <div className='dictionary-header' style={fontFamily}>
+    <div className='dictionary-header' >
       <section className='dictionary-section'>
         <img src={logo} alt="logo" />
           <div className='theme'>
             <div className="select-container" >
-              <select className="fonts" onChange={selectChange}>
-                <option className='option' value="sans-serif" >Sans Serif</option>
-                <option className='option' value="serif" >Serif</option>
-                <option className='option' value="mono" >Mono</option>
-              </select>
-              <div className="arrow-icon-container">
-                <img src={arrowDown} alt="arrow-down" className="arrow-down-icon"/>
-              </div>
+              <Select 
+                className='select-font'
+                styles={selectStyles}
+                defaultValue={fonts[0]} 
+                options={fonts} 
+                onChange={selectChange}/>
             </div>
             
             <label className="switch">
-              <input type="checkbox" onChange={handleToggle} defaultChecked={selectedTheme === "dark"}/>
+              <input type="checkbox" onChange={handleToggle} defaultChecked={currentTheme === "dark"} />
               <span className="slider"></span>
             </label>
             <img src={moon} alt="moon-logo" />

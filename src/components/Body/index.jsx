@@ -1,10 +1,13 @@
 import React from 'react'
 import playButton from "../../assets/images/icon-play.svg"
+import newWindow from "../../assets/images/icon-new-window.svg"
 import "./Body.css"
 
 function Body({ results }) {
   const { meanings } = results?.length ? results[0] : {meanings : []}
   const { phonetics } = results?.length ? results[0] : {phonetics : []}
+
+  console.log(results )
 
   let phonetic = ""
   let mp3
@@ -52,15 +55,26 @@ function Body({ results }) {
                     {element.example && <li className='word-example'>"{element.example}"</li>}
                   </ul>
                   ))}
-                {meaning.synonyms.length > 0 
+                {meaning.synonyms?.length > 0 
                   && 
                     <h4 className="word-synonyms">
                       Synonyms <span className='synonyms'>{meaning.synonyms.join(", ")}</span>
+                    </h4>}
+                {meaning.antonyms?.length > 0 
+                  && 
+                    <h4 className="word-antonyms">
+                      Antonyms <span className='antonyms'>{meaning.antonyms.join(", ")}</span>
                     </h4>}
             </div>
           </section>
         </div>   
         ))}
+        <hr className='hr'/>
+        <div className="word-source">
+          <h5>Source</h5>
+          <a href={results[0].sourceUrls} target='blank'>{results[0].sourceUrls}</a>
+          <img src={newWindow} alt="link-img" />
+        </div>
       </section>
 
     </div>
