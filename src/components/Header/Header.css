@@ -145,9 +145,10 @@ input:hover:checked + .slider:before {
 }
 
 .search-input{
+    
     height: 58px;
     border-radius: 20px;
-    margin-inline:auto auto;
+    margin-inline:20px 20px;
     border-style: none;
     width: 46rem;
     background-color: var(--search_input_color);
@@ -158,6 +159,7 @@ input:hover:checked + .slider:before {
     font-size: 1.25rem;
     text-indent: 20px;
 } 
+
 .search-input::placeholder{
     font-family: var(--body_font);
     font-weight: 500;
@@ -176,4 +178,31 @@ input:hover:checked + .slider:before {
 }
 .search-btn{
     width: 20vh;
+}
+
+@media screen and (max-width: 780px){
+    .search-input{
+        width: 26rem;
+    }
+    .dictionary-header{
+        width: 26rem;
+        margin-inline: auto auto;
+    }
+}
+@media screen and (max-width: 460px){
+    .search-input{
+        width: 22rem;
+        height: 50px;
+        font-weight: 500;
+        font-size: 14px;
+        text-indent: 20px;
+    }
+    .dictionary-header{
+        width: 22rem;
+        margin-inline: auto auto;
+    }
+ 
+    .search-input::placeholder{
+        font-size: 14px;
+    }
 }

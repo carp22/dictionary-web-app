@@ -1,8 +1,9 @@
 import React from 'react'
 import logo from "../../assets/images/logo.svg"
 import searchIcon from "../../assets/images/icon-search.svg"
-import arrowDown from "../../assets/images/icon-arrow-down.svg"
-import moon from "../../assets/images/icon-moon.svg"
+// import moon from "../../assets/images/icon-moon.svg"
+import { IconMoon } from '@tabler/icons-react';
+import { IconSunHigh  } from '@tabler/icons-react';
 import Select from 'react-select'
 import { useState } from 'react'
 import "./Header.css"
@@ -105,10 +106,12 @@ function Header({onSearch, selectFont, darkMode, lightMode, currentTheme}) {
               <input type="checkbox" onChange={handleToggle} defaultChecked={currentTheme === "dark"} />
               <span className="slider"></span>
             </label>
-            <img src={moon} alt="moon-logo" />
+            {currentTheme === "dark" ? <IconMoon color="#A445ED"/> : <IconSunHigh  color="#A445ED"/>}
           </div>
-
+          
+        
       </section>
+          
         <form className='search-section' onSubmit={handleSubmit}>
           <input 
             type="text" 
@@ -118,7 +121,7 @@ function Header({onSearch, selectFont, darkMode, lightMode, currentTheme}) {
             onChange={handleChange}/>
           <img src={searchIcon} alt="search-icon" className="search-icon" onClick={handleClick}/>
         </form>
-          
+        
     </div>
   )
 }

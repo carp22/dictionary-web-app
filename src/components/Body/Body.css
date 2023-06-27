@@ -50,20 +50,10 @@ body{
     gap: 1rem;
 }
 .partofspeech-text::after{
-    /* content: "";
-    position: absolute;
-    margin-left: 20px;
-    max-width: inherit;
-    min-width: 20rem;
-    height: 1px;
-    background-color: #757575;
-    top: 1rem; */
-
     content: "";
     height: 0.3px;
     background-color: #757575;
     flex-grow: 1;
-
 }
 .word-partofspeech > p{
     font-size: 20px;
@@ -107,6 +97,7 @@ hr{
     display: flex;
     padding-block: 40px;
     align-items: center;
+    flex-wrap: wrap;
 }
 .word-source > h5{
     font-size: 14px;
@@ -123,5 +114,51 @@ hr{
 .word-source > a:hover{
     color: #A445ED;
     text-decoration: underline;
-    font-size: 14px;
+}
+
+@media screen and (max-width: 780px){
+    .dictionary-body{
+        width: 26rem;
+        margin-inline: auto auto;
+    }  
+}
+@media screen and (max-width: 460px){
+    .dictionary-body{
+        width: 22rem;
+        margin-inline: auto auto;
+    }  
+    .word-text{
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .word-phonetic{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .word-partofspeech > p{
+        font-size: 14px;
+        padding: 0 0 16px;
+        color: #757575
+    }
+    .partofspeech-text{
+        font-size: 18px;
+        padding: 0 0 32px;;
+        font-weight: 700;
+        line-height: 1.1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .word-meanings{
+        font-size: 14px;
+    }
+    .word-source > h5{
+        font-size: 10px;
+    }
+    .word-source > a{
+        font-size: 10px;
+    }
+    .word-example{
+        font-size: 12px;
+    }
 }

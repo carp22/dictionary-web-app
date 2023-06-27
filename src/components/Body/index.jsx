@@ -33,7 +33,7 @@ function Body({ results }) {
   }
   
   return (
-    <div>
+    <div className='dictionary-body'>
       <section className='word-title'>
         <div className='meaning-found'>
           <h2 className='word-text'>{results[0]?.word}</h2>
