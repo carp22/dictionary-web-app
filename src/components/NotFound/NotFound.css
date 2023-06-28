@@ -8,3 +8,19 @@
 .error-title{
     padding-block: 20px;
 }
+
+@media screen and (max-width: 780px){
+    .error-container{
+        width: 26rem;
+        margin-inline: auto auto;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 460px){
+    .error-container{
+        width: 22rem;
+        margin-inline: auto auto;
+        text-align: center;
+    }
+
+}
